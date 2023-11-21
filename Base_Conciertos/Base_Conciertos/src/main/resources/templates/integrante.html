@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Integrante</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+            crossorigin="anonymous">
+    </head>
+    <body>
+      <nav class="navbar navbar-expand" style="background-color: #c1d6fa;">
+        <div class="container-fluid">
+          <a class="navbar-brand" th:href="@{'/'}">
+            Conciertos Peru
+          </a>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" th:href="@{'/proveedor'}">Proveedores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{'/integrante'}">Integrantes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{'/artista'}">Artistas</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div style="text-align: center;"><h1>Lista de Integrantes</h1></div>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/integrante/nuevo'}">Nuevo Integrante</a>
+        <table class="table table-striped">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Anhios</th>
+            <th>Rol</th>
+            <th>ArtistasID</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr th:each="integrante: ${integranteList}">
+            <td th:text="${integrante.id}"> </td>
+            <td th:text="${integrante.nombre}"></td>
+            <td th:text="${integrante.edad}"></td>
+            <td th:text="${integrante.anhios}"></td>
+            <td th:text="${integrante.rol}"></td>
+            <td th:text="${integrante.artistasId}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/integrante/editar?id=' + ${integrante.id}}">Editar</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/integrante/borrar?id=' + ${integrante.id}}">Borrar</a></td>
+          </tr>
+        </table>
+      </div>
+      <div style="background-color: #dae0e8;">
+        <div style="padding-top: 10px; padding-bottom: 10px;" class="container">
+          # Grupo 3 PUCP @ 2023
+        </div>
+
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+              crossorigin="anonymous"></script>
+    </body>
+</html>
